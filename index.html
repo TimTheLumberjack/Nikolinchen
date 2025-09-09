@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nikola</title>
+    <style>
+        /* ===== GRUNDLEGENDE STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #FAF3DD;
+            color: #5E6472;
+            line-height: 1.5;
+        }
+
+        /* ===== FARBVARIABLEN ===== */
+        :root {
+            --coral: #FFA69E;
+            --cream: #FAF3DD;
+            --mint: #F2E0A6;
+            --blue: #AED9E0;
+            --gray: #5E6472;
+            --black: #000000;
+            --white: #ffffff;
+        }
+
+        /* ===== CONTAINER UND LAYOUT ===== */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== HEADER MIT VIEL WHITESPACE ===== */
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-color: var(--mint);
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            color: var(--black);
+            margin-bottom: 30px;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.5rem;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 400;
+        }
+
+        /* ===== BILDER GALERIE ===== */
+        .gallery {
+            background-color: var(--white);
+            padding: 120px 0;
+        }
+
+        .gallery-title {
+            font-size: 2rem;
+            font-weight: 300;
+            color: var(--coral);
+            margin-bottom: 80px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 1;
+            overflow: hidden;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* ===== TEXT BEREICH ===== */
+        .content-section {
+            background-color: var(--blue);
+            padding: 120px 0;
+        }
+
+        .content-title {
+            font-size: 2rem;
+            font-weight: 300;
+            color: var(--white);
+            margin-bottom: 60px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .content-text {
+            background-color: var(--white);
+            color: var(--gray);
+            padding: 60px;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .content-text p {
+            margin-bottom: 25px;
+        }
+
+        .content-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        .content-text p:first-child {
+            color: var(--coral);
+            font-weight: 400;
+        }
+
+        /* ===== GESCHENK BEREICH ===== */
+        .gift-section {
+            background-color: var(--coral);
+            padding: 120px 0;
+            text-align: center;
+        }
+
+        .gift-title {
+            font-size: 2rem;
+            font-weight: 300;
+            color: var(--white);
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .gift-link {
+            display: inline-block;
+            background-color: var(--white);
+            color: var(--gray);
+            text-decoration: none;
+            padding: 20px 50px;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 400;
+            transition: all 0.3s ease;
+        }
+
+        .gift-link:hover {
+            background-color: var(--gray);
+            color: var(--white);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background-color: var(--gray);
+            text-align: center;
+            color: var(--white);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 60px 0;
+        }
+
+        /* ===== RESPONSIVE DESIGN - MOBILE FIRST ===== */
+
+        /* Mobile Styles (Standard) */
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+                letter-spacing: 2px;
+                margin-bottom: 20px;
+            }
+
+            .hero-content .subtitle {
+                font-size: 1.1rem;
+                letter-spacing: 1px;
+            }
+
+            .gallery {
+                padding: 80px 0;
+            }
+
+            .gallery-title,
+            .content-title,
+            .gift-title {
+                font-size: 1.5rem;
+                margin-bottom: 50px;
+                letter-spacing: 1px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .content-section {
+                padding: 80px 0;
+            }
+
+            .content-text {
+                padding: 40px 30px;
+                font-size: 1.1rem;
+                line-height: 1.7;
+            }
+
+            .content-text p {
+                margin-bottom: 20px;
+            }
+
+            .gift-section {
+                padding: 80px 0;
+            }
+
+            .gift-link {
+                padding: 15px 35px;
+                font-size: 1rem;
+            }
+
+            .footer {
+                padding: 40px 0;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Sehr kleine Bildschirme */
+        @media screen and (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2rem;
+                letter-spacing: 1px;
+            }
+
+            .hero-content .subtitle {
+                font-size: 1rem;
+            }
+
+            .content-text {
+                padding: 30px 20px;
+                font-size: 1rem;
+            }
+
+            .gallery,
+            .content-section,
+            .gift-section {
+                padding: 60px 0;
+            }
+
+            .gift-link {
+                padding: 12px 30px;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Desktop Anpassungen */
+        @media screen and (min-width: 769px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Große Bildschirme */
+        @media screen and (min-width: 1024px) {
+            .hero-content h1 {
+                font-size: 5rem;
+                letter-spacing: 4px;
+            }
+
+            .hero-content .subtitle {
+                font-size: 1.8rem;
+                letter-spacing: 3px;
+            }
+
+            .gallery,
+            .content-section,
+            .gift-section {
+                padding: 150px 0;
+            }
+
+            .content-text {
+                padding: 80px;
+                font-size: 1.3rem;
+                line-height: 1.9;
+            }
+
+            .gallery-title,
+            .content-title,
+            .gift-title {
+                font-size: 2.5rem;
+                margin-bottom: 100px;
+            }
+        }
+
+        /* ===== SMOOTH SCROLLING ===== */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- ===== HERO SEKTION MIT VIEL PLATZ ===== -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>27</h1>
+            <p class="subtitle">Herzlichen Glückwunsch zu deinem 27ten Geburtstag Nikolinchen!</p>
+            <p class="subtitle">Unten wartet dein Geschenk auf dich!</p>
+        </div>
+    </section>
+
+    <!-- ===== BILDER GALERIE ===== -->
+    <section class="gallery">
+        <div class="container">
+            <h2 class="gallery-title">Aber zuerst ein paar Erinnerungen</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="./bild1.jpg" alt="Erinnerung 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="./bild2.jpg" alt="Erinnerung 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="./bild3.jpg" alt="Erinnerung 3">
+                </div>
+                <div class="gallery-item">
+                    <img src="./bild4.jpg" alt="Erinnerung 4">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TEXT BEREICH ===== -->
+    <section class="content-section">
+        <div class="container">
+            <h2 class="content-title">Herlichen Glückwunsch!</h2>
+            <div class="content-text">
+                <p>Nikola – die Königin der Kreide, die Herrscherin der Arbeitsblätter und die absolute Endgegnerin aller faulen Kollegen! Kein Wunder, dass selbst deine Dinos dir applaudieren, wenn du die Schule nicht nur unterrichtest, sondern gleich noch putzt, organisierst und wahrscheinlich heimlich nachts auch noch renovierst.
+
+Dein Ehrgeiz ist so legendär, dass man dich eigentlich in die Geschichtsbücher aufnehmen müsste. In Cabo verlierst du zwar immer gegen mich, aber das gehört zu deinem pädagogischen Konzept: Du lässt andere gewinnen, damit sie nicht traurig sind.
+
+Im Quizzen bist du sowieso schon besser als die halbe ARD zusammen – „Gefragt – Gejagt“ hat längst Angst vor dir, deshalb haben sie deine Bewerbung verbrannt. 
+
+Und dann ist da noch deine geheime Superkraft: Du siehst mit 27 immer noch aus wie 20. 
+
+Kurz gesagt: Alles Gute zum Geburtstag an die unbesiegbare, unermüdliche, unfassbar großartige Nikola.</p>
+                
+            </div>
+        </div>
+    </section>
+    <section class="content-section">
+        <div class="container">
+            <h2 class="content-title">Jetzt nochmal ohne ChatGPT</h2>
+            <div class="content-text">
+                <p>Liebe Nikola, du bist die Partnerin die mir immer halt gibt und immer für mich da ist. Ich bin unendlich dankbar, das ich dich kennengelernt habe. Nach nun schon mehr als ein Jahr seit unserem kennenlernen, liebe ich dich nur umso mehr. Genieße deinen Geburtstag und habe viel Spaß mit den Geschenken! <3 </p>
+                
+            </div>
+        </div>
+    </section>
+    <!-- ===== GESCHENK BEREICH ===== -->
+    <section class="gift-section">
+        <div class="container">
+            <h2 class="gift-title">Dein Geschenk (eins :P)</h2>
+            <a href="https://feverup.com/m/414247?utm_source=email&utm_medium=purchase_confirmation&utm_campaign=414247_bre&utm_term=plan_image&utm_swu=913&utm_content=candlelight_default" class="gift-link">Hier entlang</a>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== */
+    <footer class="footer">
+        <div class="container">
+            <p>2025</p>
+        </div>
+    </footer>
+
+</body>
+</html>
